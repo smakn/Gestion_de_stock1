@@ -1,10 +1,13 @@
 body {
-  background: #1c242d;
+background-image:url('interface.jpg');
+  background-color: #3b74b4;
 }
 .box {
+  box-shadow: 5px 5px 15px rgb(240, 237, 237);
+  border-radius: 30px;
   border: 1px solid #c4c4c4;
   padding: 30px 25px 10px 25px;
-  background: white;
+  background: transparent;
   margin: 30px auto;
   width: 360px;
 }
@@ -12,8 +15,8 @@ h1.box-logo a {
   text-decoration:none;
 }
 h1.box-title {
-  color: #AEAEAE;
-  background: #f8f8f8;
+  color: white;
+  background: transparent;
   font-weight: 300;
   padding: 15px 25px;
   line-height: 30px;
@@ -22,8 +25,9 @@ h1.box-title {
   margin: -27px -26px 26px;
 }
 .box-button {
-  border-radius: 5px;
   background: #d2483c;
+  border-radius: 10px;
+  opacity: 0.7;
   text-align: center;
   cursor: pointer;
   font-size: 19px;
@@ -43,12 +47,14 @@ h1.box-title {
 {
   text-decoration:none;
   font-size:12px;
-  color:#666;
+  color:white;
 }
 .box-input {
   font-size: 14px;
   background: #fff;
   border: 1px solid #ddd;
+  border-radius: 10px;
+  opacity: 0.7;
   margin-bottom: 25px;
   padding-left:10px;
   border-radius: 5px;

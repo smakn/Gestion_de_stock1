@@ -2,6 +2,10 @@
 <html>
 <head>
 	<link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
 </head>
 <body>
 <?php
@@ -28,7 +32,8 @@ if (isset($_POST['username']) && isset($_POST['password'])){
 }
 ?>
 <form class="box" action="" method="post" name="login">
-<h1 class="box-logo box-title"><a href="https://waytolearnx.com/">WayToLearnX.com</a></h1>
+<i class='bx bx-run box-logo box-title'></i>
+        <span class="logo_name">G-ESAC</span>
 <h1 class="box-title">Connexion</h1>
 <input type="text" class="box-input" name="username" placeholder="Nom d'utilisateur">
 <input type="password" class="box-input" name="password" placeholder="Mot de passe">

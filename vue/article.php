@@ -2,23 +2,24 @@
     include 'entete.php';
     session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ../registration/login.php"); // Redirige vers la page de connexion si non authentifié
-    exit();
-}
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: ../registration/login.php"); // Redirige vers la page de connexion si non authentifié
+            exit();
+        }
 
 // Vérifiez si l'utilisateur a le rôle approprié pour la gestion des articles
-if ($_SESSION['role'] != 'admin') {
-    header("Location: dashboard.php"); // Redirige vers la page non autorisée
-    exit();
-}
+
+        if ($_SESSION['role'] != 'admin' && $_SESSION['role'] != 'vendeur') {
+            header("Location: dashboard.php"); // Redirige vers la page non autorisée
+            exit();
+        }
 
 //recupaire l article qui est dans GET pour le mettre dans le formulaire
-    if (!empty($_GET['id'])) {
-        $article = getArticle($_GET['id']);
-    }
-    
-?>
+        if (!empty($_GET['id'])) {
+            $article = getArticle($_GET['id']);
+        }
+        
+    ?>
 
     <div class="home-content">
         <div  class="overview-boxes">
