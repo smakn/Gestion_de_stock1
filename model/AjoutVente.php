@@ -39,7 +39,7 @@ if (
                     if ($req ->rowCount()!=0) {
                       
                         $_SESSION['message']['text'] = "Vente effectué avec succes:";
-                        $_SESSION['message']['type'] = "succes";
+                        $_SESSION['message']['type'] = "success";
                     }else{
                         $_SESSION['message']['text'] = "impossible de faire cette vente:";
                     $_SESSION['message']['type'] = "danger";

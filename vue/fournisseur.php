@@ -8,7 +8,7 @@
     }
     
     // Vérifiez si l'utilisateur a le rôle approprié pour la gestion des articles
-    if ($_SESSION['role'] != 'admin') {
+    if ($_SESSION['role'] != 'admin'&& $_SESSION['role'] != 'commande') {
         header("Location: dashboard.php"); // Redirige vers la page non autorisée
         exit();
     }

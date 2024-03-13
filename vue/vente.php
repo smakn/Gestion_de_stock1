@@ -8,10 +8,12 @@
     }
     
     // Vérifiez si l'utilisateur a le rôle approprié pour la gestion des articles
-    if ($_SESSION['role'] != 'vendeur') {
+    if ($_SESSION['role'] != 'vendeur' && $_SESSION['role'] != 'admin') {
         header("Location: dashboard.php"); // Redirige vers la page non autorisée
         exit();
     }
+
+
 //recupaire l article qui est dans GET pour le mettre dans le formulaire
     if (!empty($_GET['id'])) {
         $article = getVente($_GET['id']);
@@ -86,45 +88,52 @@
 
                     <?php    
                     } 
-                    ?>
-                    
+                    ?>                   
                 </form>
-
             </div>
             <div class="box">
-                <table class="mtable">
-                    <tr>
-                        <th>Article</th>
-                        <th>Client</th>
-                        <th>Quantité</th>
-                        <th>Prix</th>
-                        <th>Date</th>
+                <form method="POST" action="recuVente.php">
+                    <table class="mtable">
+                        <tr>
+                            <th>Selectionne</th>
+                            <th>Article</th>
+                            <th>Client</th>
+                            <th>Quantité</th>
+                            <th>Prix</th>
+                            <th>Date</th>
+                            <th>Action</th>
+
+                        </tr>
+                        <!--afficher les article enregistre dans la base sur article-->
+                        <?php
+                            $ventes = getVente();
+                            if (!empty($ventes) && is_array($ventes)) {
+                                foreach ($ventes as $key => $value) { 
+                        ?>
+                        <tr>
+                        <td><input type="checkbox" id="<?=$value['id'] ?>" name="checkbox[]" value="<?=$value['id']?>"></td> 
+                       
+                            <td> <?= $value['Nom_article'] ?></td>
+                            <td> <?= $value['Nom'] ." ". $value['Prenom']?></td>
+                            <td> <?= $value['quantite'] ?></td>
+                            <td> <?= $value['prix'] ?></td>
+                            <td> <?= date('d/m/Y H:i:s', strtotime ($value['date_vente'])) ?></td>
+                            <td>
+                                <a href="recuVente.php?id=<?=  $value['id'] ?>"> <i class='bx bx-receipt'></i> </a>
+                                <a onclick="annuleVente(<?=$value['id'] ?>, <?=$value['idArticles'] ?>, <?=$value['quantite'] ?> )" style="color:red;"> <i class='bx bx-stop-circle'></i> </a>
+                            </td>
+                        </tr>
                         
-                        <th>Action</th>
-                    </tr>
-                    <!--afficher les article enregistre dans la base sur article-->
-                    <?php
-                        $ventes = getVente();
-                        if (!empty($ventes) && is_array($ventes)) {
-                            foreach ($ventes as $key => $value) { 
-                    ?>
-                    <tr>
-                        <td> <?= $value['Nom_article'] ?></td>
-                        <td> <?= $value['Nom'] ." ". $value['Prenom']?></td>
-                        <td> <?= $value['quantite'] ?></td>
-                        <td> <?= $value['prix'] ?></td>
-                        <td> <?= date('d/m/Y H:i:s', strtotime ($value['date_vente'])) ?></td>
-                        <td>
-                            <a href="recuVente.php?id=<?=  $value['id'] ?>"> <i class='bx bx-receipt'></i> </a>
-                            <a onclick="annuleVente(<?=$value['id'] ?>, <?=$value['idArticles'] ?>, <?=$value['quantite'] ?> )" style="color:red;"> <i class='bx bx-stop-circle'></i> </a>
-                        </td>
-                    </tr>
-                    <?php
+                        <?php
+                                }
                             }
-                        }
-                    ?>
-                </table>
+                        ?>
+                        
+                    </table>
+                    <button type="submit" name="imprimerVentes"><a href="recuVente.php?id=<?=$value['id'] ?>" style="color:blue;"> <i class='bx bx-stop-circle'></i> Imprimer tout</a></button>
+                </form>
             </div>
+          
         </div>
 
     </div>

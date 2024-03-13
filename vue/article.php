@@ -9,10 +9,11 @@
 
 // Vérifiez si l'utilisateur a le rôle approprié pour la gestion des articles
 
-        if ($_SESSION['role'] != 'admin' && $_SESSION['role'] != 'vendeur') {
+        if ($_SESSION['role'] != 'admin' && $_SESSION['role'] != 'commande') {
             header("Location: dashboard.php"); // Redirige vers la page non autorisée
             exit();
         }
+
 
 //recupaire l article qui est dans GET pour le mettre dans le formulaire
         if (!empty($_GET['id'])) {

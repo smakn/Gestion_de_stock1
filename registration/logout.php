@@ -1,7 +1,7 @@
 <?php
 	// Initialiser la session
 	session_start();
-	
+	$_SESSION = array();
 	// Détruire la session.
 	if(session_destroy())
 	{

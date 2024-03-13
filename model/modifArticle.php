@@ -30,7 +30,7 @@ if (
     } 
     else{
         $_SESSION['message']['text'] = "Rien a ete modifie:";
-        $_SESSION['message']['type'] = "warning";
+        $_SESSION['message']['type'] = "danger";
     }
 
 }
