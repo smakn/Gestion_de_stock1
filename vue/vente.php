@@ -14,7 +14,7 @@
     }
 
 
-//recupaire l article qui est dans GET pour le mettre dans le formulaire
+    //recupaire l article qui est dans GET pour le mettre dans le formulaire
     if (!empty($_GET['id'])) {
         $article = getVente($_GET['id']);
     }
@@ -128,10 +128,11 @@
                                 }
                             }
                         ?>
-                        
                     </table>
-                    <button type="submit" name="imprimerVentes"><a href="recuVente.php?id=<?=$value['id'] ?>" style="color:blue;"> <i class='bx bx-stop-circle'></i> Imprimer tout</a></button>
+                    
+                    
                 </form>
+                <a href="recuVente.php?id=<?=$value['id'] ?>" style="color:#fff; border:solid; background: #2697ff; padding: 5px; border-radius: 5px; text-decoration: none;" name="imprimerVentes"> <i class='bx bx-receipt'></i> Imprimer tout</a>
             </div>
           
         </div>

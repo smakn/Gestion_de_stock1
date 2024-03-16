@@ -39,6 +39,8 @@
         </div>
 
         <br>
+
+
         <table class="mtable">
                     <tr>
                         <th>Designation</th>
@@ -57,18 +59,6 @@
                     </tr>
 
                 </table>
-               <?php
-               if (isset($_POST['imprimerVentes']) && isset($_POST['checkbox'])) {
-                    $elementsCoches = $_POST['checkbox'];
-                    
-                    // Parcourir les éléments cochés et les afficher
-                    foreach($elementsCoches as $element) {
-                        echo "Élément coché : " . $element . "<br>";
-                    }
-                } else {
-                    echo "Aucun élément n'a été coché.";
-                }
-                ?>
     </div>
        
     </div>
