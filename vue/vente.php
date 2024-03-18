@@ -78,12 +78,15 @@
                    
 
                     <button type="submit" name="valider"> Valider</button>
+                    
                 <!--message a afficher en cas de reussite du remplissage du formulaire ou de l echec-->
                     <?php
                         if (!empty($_SESSION['message']['text'])) {
+                             echo $_POST ['quantite'] 
                     ?>
                     <div class="alert <?= $_SESSION['message']['type'] ?>">
                         <?= $_SESSION['message']['text'] ?>
+
                     </div>
 
                     <?php    
@@ -92,7 +95,7 @@
                 </form>
             </div>
             <div class="box">
-                <form method="POST" action="recuVente.php">
+                <form method="POST" action="recutouteslesventes.php">
                     <table class="mtable">
                         <tr>
                             <th>Selectionne</th>
@@ -111,8 +114,9 @@
                                 foreach ($ventes as $key => $value) { 
                         ?>
                         <tr>
-                        <td><input type="checkbox" id="<?=$value['id'] ?>" name="checkbox[]" value="<?=$value['id']?>"></td> 
-                       
+                            <td>
+                                <input type="checkbox" id="<?=$value['id'] ?>" name="vente[]" value="<?=$value['id']?>">
+                            </td> 
                             <td> <?= $value['Nom_article'] ?></td>
                             <td> <?= $value['Nom'] ." ". $value['Prenom']?></td>
                             <td> <?= $value['quantite'] ?></td>
@@ -129,10 +133,12 @@
                             }
                         ?>
                     </table>
-                    
+                   <input class="Imprimertout" type="submit" name="imprimertout" value="Imprimer toute la commante"> 
                     
                 </form>
-                <a href="recuVente.php?id=<?=$value['id'] ?>" style="color:#fff; border:solid; background: #2697ff; padding: 5px; border-radius: 5px; text-decoration: none;" name="imprimerVentes"> <i class='bx bx-receipt'></i> Imprimer tout</a>
+              
+                <?php
+                ?>
             </div>
           
         </div>

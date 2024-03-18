@@ -1,19 +1,12 @@
 <?php
     include 'entete.php';
-
-    
 ?>
+    <div class="home-content">
+        <button class="hidden-print" id="btnPrint" style="position: relative; left: 45%;"> <i class='bx bx-printer'></i> Imprimer</button>
+    </div>
 
-<div class="home-content">
-
-<button class="hidden-print" id="btnPrint" style="position: relative; left: 45%;"> <i class='bx bx-printer'></i> Imprimer</button>
- <?php
- //recupaire l article qui est dans GET pour le mettre dans le formulaire
-        if (!empty($_GET['id'])) {
-            $vente = getVente($_GET['id']);
-        
- ?>
     <div class="page">
+    <!--
         <div class="cote-a-cote">
             <h2>GESAC stock</h2>
             <div>
@@ -39,9 +32,8 @@
             <p><?= $vente['adresse']?></p>
 
         </div>
-
+-->
         <br>
-
 
         <table class="mtable">
                     <tr>
@@ -52,24 +44,30 @@
                         
                     </tr>
                     <!--afficher les article enregistre dans la base sur article-->
-
+<?php
+    $prixtotal = 0; 
+    foreach ($_POST['vente'] as $v) {
+        $vente = getVente($v);
+        $prixtotal = $prixtotal+ $vente['prix'];
+?>
                     <tr>
                         <td> <?= $vente['Nom_article'] ?></td>
                         <td> <?= $vente['quantite'] ?></td>
                         <td> <?= $vente['prix_unitaire'] ?></td>
                         <td> <?= $vente['prix'] ?></td>
                     </tr>
-
+<?php
+   }
+?>
+                    <tr>
+                        <td> Totaux</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> <?= $prixtotal ?></td>
+                    </tr>
                 </table>
     </div>
-      <?php
-        }
-      ?> 
-    </div>
-    
-    </section>
-</body>
-</html>
+
 
 <?php
     include 'pied.php';
@@ -86,18 +84,6 @@
         var article = document.querySelector('#id_articles');
         var quantite = document.querySelector('#quantite');
         var prix = document.querySelector('#prix');
-
-        var prixUnitaire = article.options[article.selectedIndex].getAttribute('data-prix');
-        prix.value = Number(quantite.value) * Number(prixUnitaire);
-    }
-</script>
-
-
-<!--<script>
-    function setPrix(){
-        var article = document.querySelector('#id_articles');
-        var article = document.querySelector('#quantite');
-        var article = document.querySelector('#prix');
 
         var prixUnitaire = article.options[article.selectedIndex].getAttribute('data-prix');
         prix.value = Number(quantite.value) * Number(prixUnitaire);

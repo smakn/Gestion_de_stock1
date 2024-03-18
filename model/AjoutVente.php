@@ -10,11 +10,13 @@ if (
 
     ) {
         $article = getArticle($_POST ['id_articles'] );
-
+        
         if (!empty($article) && is_array($article)) {
-            if ($_POST ['quantite']> $article['quantite']) {
+            
+            if ($_POST ['quantite'] > $article['quantite']) {
                 $_SESSION['message']['text'] = "la quantité à vendre n est pas disponible:";
                 $_SESSION['message']['type'] = "succes";
+                echo "bonjour";
             }else{
                 $sql = "INSERT INTO ventes(id_articles, id_clients, quantite, prix)
                 VALUES (?, ?, ?, ?)   "; 
@@ -40,6 +42,7 @@ if (
                       
                         $_SESSION['message']['text'] = "Vente effectué avec succes:";
                         $_SESSION['message']['type'] = "success";
+                        echo "bonjour";
                     }else{
                         $_SESSION['message']['text'] = "impossible de faire cette vente:";
                     $_SESSION['message']['type'] = "danger";
@@ -61,6 +64,7 @@ else {
     $_SESSION['message']['type'] = "danger";
 
     }
+
 header("Location:../vue/vente.php");
     
 ?>
