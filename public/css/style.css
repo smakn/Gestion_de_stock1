@@ -350,10 +350,14 @@ nav .profile-details i {
   color: #333;
 }
 .Imprimertout{
+  align-items: center;
   background-color: #2697ff;
   color: white;
   font-size: 20px;
-  margin:30px;
+ justify-content: center;
+  margin-left:90px;
+  width: 70%;
+
 }
 
 
@@ -486,18 +490,18 @@ form{
   width: 100%;
 }
 
-.alert {
+.alert{
   margin: 10px;
   padding: 15px;
   color: white;
   border-radius: 10px;
 }
 
-.alert.danger {
+.alert.danger{
   background-color: red;
 }
 
-.alert.succes {
+.alert.success{
   background-color: green;
 }
 /*css tableau*/

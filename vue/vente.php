@@ -1,5 +1,6 @@
 <?php
     include 'entete.php';
+    
 
     session_start();
     if (!isset($_SESSION['user_id'])) {
@@ -18,7 +19,6 @@
     if (!empty($_GET['id'])) {
         $article = getVente($_GET['id']);
     }
-    
 ?>
 
 <div class="home-content">
@@ -80,20 +80,24 @@
                     <button type="submit" name="valider"> Valider</button>
                     
                 <!--message a afficher en cas de reussite du remplissage du formulaire ou de l echec-->
+
                     <?php
-                        if (!empty($_SESSION['message']['text'])) {
-                             echo $_POST ['quantite'] 
+
+                        if (!empty($_SESSION['message']['text'])) {                           
                     ?>
                     <div class="alert <?= $_SESSION['message']['type'] ?>">
-                        <?= $_SESSION['message']['text'] ?>
+                        <?= $_SESSION['message']['text']  ?>
+                       
 
                     </div>
 
                     <?php    
-                    } 
-                    ?>                   
+                        } 
+                    ?>   
                 </form>
             </div>
+ <!--formulaire obtenu apres les ventes effectue-->
+
             <div class="box">
                 <form method="POST" action="recutouteslesventes.php">
                     <table class="mtable">
@@ -107,7 +111,7 @@
                             <th>Action</th>
 
                         </tr>
-                        <!--afficher les article enregistre dans la base sur article-->
+                        <!--afficher les articles enregistre dans la base sur article-->
                         <?php
                             $ventes = getVente();
                             if (!empty($ventes) && is_array($ventes)) {
